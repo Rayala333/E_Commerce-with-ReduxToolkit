@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import '../CSS/cart.css'
 import { useSelector, useDispatch } from 'react-redux';
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 import {getCartTotal,removeItem,incrreseItemQuantity,decreaseItemQuantity} from '../redux/cartSlice'
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const { cart,totalQuantity,totalPrice} = useSelector((state) => state.app)
@@ -19,9 +21,11 @@ const Cart = () => {
     return (
         <>
             {
-                cart.length === 0 ? <h1 style={{textAlign:"center",marginTop:"2rem"}}>cart is emty</h1> :
+                cart.length === 0 ? <div style={{textAlign:"center",marginTop:"2rem"}}><h1 >cart is emty</h1> <Link to='/' style={{fontSize:"2rem"}}><FaArrowAltCircleRight/> Click to Shoping</Link> </div>:
                     <section className="h-100 gradient-custom ">
                         <div className="container py-5">
+                        <Link to='/' style={{color:"#fff", textAlign:"center",fontSize:"2rem"}}><FaArrowAltCircleRight style={{marginTop:"-7px"}}/>  Click to Shoping</Link>
+                        
                             <div className="row d-flex justify-content-center my-4">
                                 <div className="col-md-8">
                                     <div className="card mb-4">

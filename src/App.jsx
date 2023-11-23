@@ -5,6 +5,7 @@ import Products from './components/Products';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Cart from './components/Cart';
 
+
 const App = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const App = () => {
         </Routes>
       
       </BrowserRouter>
+      
     </>
   )
 }

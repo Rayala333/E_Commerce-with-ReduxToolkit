@@ -2,12 +2,16 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from 'axios';
 
+
+const storedCart = localStorage.getItem("cart");
+const initialCart = storedCart ? JSON.parse(storedCart) : [] ;
+
 const initialState = {
     loading:false,
     items:[],
     error:null,
     searchData:"",
-    cart:[],
+    cart:[...initialCart],
     totalQuantity: 0,
     totalPrice:0
 }
@@ -40,6 +44,8 @@ export const cartSlice = createSlice({
             console.log(find,"find")
                 
                 // console.log(action.payload.id,"cart_Action")
+
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         getCartTotal : (state)=>{
             let {totalQuantity,totalPrice} = state.cart.reduce((cartTotal,cartItem)=>{
@@ -57,9 +63,13 @@ export const cartSlice = createSlice({
             // state.totalPrice = parseInt(totalPrice.toFixed(2))
             state.totalPrice = totalPrice
             state.totalQuantity = totalQuantity
+
+            localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         removeItem : (state,action)=>{
                 state.cart = state.cart.filter((item)=>item.id!==action.payload.id)
+
+                localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         incrreseItemQuantity : (state,action)=>{
                 state.cart = state.cart.map((item)=>{
@@ -68,6 +78,8 @@ export const cartSlice = createSlice({
                     }
                     return item
                 })
+
+                localStorage.setItem("cart", JSON.stringify(state.cart));
         },
         decreaseItemQuantity : (state,action)=>{
             state.cart = state.cart.map((item)=>{
@@ -76,6 +88,7 @@ export const cartSlice = createSlice({
                 }
                 return item
             })
+            localStorage.setItem("cart", JSON.stringify(state.cart));
     }
     },
     extraReducers:(builder)=>{

@@ -18,7 +18,7 @@ const Products = () => {
 
     useEffect(()=>{
         dispatch(cartProducts())
-    },[])
+    },[dispatch])
     console.log(items,"item")
 
     const newProduct =  items.filter((ele, i) => {
