@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <MDBNavbar expand='lg' light bgColor='light' className='sticky-top'>
       <MDBContainer fluid >
-          <Link to="/"><MDBNavbarBrand href='#'>Royal_Shoping</MDBNavbarBrand></Link>
+      <MDBIcon fab icon="edge" style={{color:"#000",fontSize:"1.8rem"}}   />
         
           <form className='d-flex justify-content-around'>
             <input type='search' className='form-control' placeholder='Type query' 
