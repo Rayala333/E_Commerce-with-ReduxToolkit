@@ -25,13 +25,17 @@ const Navbar = () => {
                 aria-label='Search' onChange={(e)=>setSearch(e.target.value)} />
           </form>
 
-            <Link to='/cart'>
-          <MDBBtn size='lg' floating style={{ backgroundColor: '#ac2bac' }} href='#'>
-                <MDBIcon fas icon="shopping-basket" size='2x' />
-                <MDBBadge color='danger' notification pill className='position-absolute  top-50  start-75 translate-middle  bg-danger border border-light rounded-circle'>
-                         {cart.length}
-                </MDBBadge>
-          </MDBBtn></Link>
+          
+
+          <Link to='/cart'>
+            <MDBBtn size='lg' floating style={{ backgroundColor: '#ac2bac' }} href='#'>
+                  <MDBIcon fas icon="shopping-basket" size='2x' />
+                  <MDBBadge color='danger' notification pill className='position-absolute  top-50  start-75 translate-middle  bg-danger border border-light rounded-circle'>
+                    {cart.length <=0 ? "":cart.length}
+                          {/* {cart.length} */}
+                  </MDBBadge>
+            </MDBBtn>
+          </Link>
        
       </MDBContainer>
     </MDBNavbar>
